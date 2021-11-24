@@ -8,7 +8,7 @@ describe('Account signup', () => {
         cy.get("a.login").click();
     })
     it('Register new account', () => {
-        let randid = Math.floor(Math.random() * 1000);
+        let randid = Math.floor(Math.random() * 1000)+1;
         let user_email = "testuser" + randid + "@grr.la";
 
         cy.readFile(data).then((obj) => {
@@ -24,7 +24,7 @@ describe('Account signup', () => {
         cy.get("#id_gender1").click();
         cy.get("#customer_firstname").type("Muntasir");
         cy.get("#customer_lastname").type("Mamun");
-        cy.readFile(filename).then((obj)=>{
+        cy.readFile(data).then((obj)=>{
             cy.get('#passwd').type(String(obj.password));
         })
         
